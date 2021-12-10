@@ -1,0 +1,45 @@
+<div class="title">Welcome to <span>your</span> sports aggregator</div>
+<div class="subtitle">Get all odds for <span>your</span> favorite sports</div>
+
+<form [formGroup]="inputForm" (ngSubmit)="fetchSports()">
+    <div class="selectedSport">
+        <mat-form-field appearance="fill">
+            <mat-label for="first-name">Sport </mat-label>
+            <mat-select matNativeControl formControlName="selectedSport" required>
+                <mat-option *ngFor="let sport of sportsList" [value]="sport.key">{{sport.details}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="region">
+        <mat-form-field appearance="fill">
+            <mat-label for="last-name">Region for bets</mat-label>
+            <mat-select matNativeControl formControlName="region" required>
+                <mat-option value="us">USA</mat-option>
+                <mat-option value="uk">United Kingdom</mat-option>
+                <mat-option value="eu">Europe</mat-option>
+                <mat-option value="au">Australia</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" [disabled]="!this.inputForm.valid" type="submit" class="fetchButton">Fetch
+        Odds</button>
+</form>
+
+<div class="odds">
+    <mat-card *ngFor="let odd of oddsList">
+        <mat-card-subtitle class="date">{{convertDate(odd.commence_time)}}</mat-card-subtitle>
+        <mat-card-subtitle class="league">{{odd.sport_nice}}</mat-card-subtitle>
+        <mat-card-title class="matchup">
+            {{odd.teams[0]}} @ {{odd.teams[1]}}
+        </mat-card-title>
+        <div class="rates" *ngIf="odd.sites[0].odds.h2h.length === 3">
+            {{odd.teams[0]}} win - <b>{{odd.sites[0].odds.h2h[0]}}</b>
+            Tie - <b>{{odd.sites[0].odds.h2h[1]}}</b>
+            {{odd.teams[1]}} win - <b>{{odd.sites[0].odds.h2h[2]}}</b>
+        </div>
+        <div class="rates" *ngIf="odd.sites[0].odds.h2h.length === 2">
+            {{odd.teams[0]}} win - <b>{{odd.sites[0].odds.h2h[0]}}</b>
+            {{odd.teams[1]}} win - <b>{{odd.sites[0].odds.h2h[1]}}</b>
+        </div>
+    </mat-card>
+</div>
