@@ -5,18 +5,17 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-hero-page',
   templateUrl: './hero-page.component.html',
-  styleUrls: ['./hero-page.component.scss']
+  styleUrls: ['./hero-page.component.scss'],
 })
 export class HeroPageComponent implements OnInit {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.getSports()
+    this.getSports();
   }
 
-  sportsList: any = []
-  oddsList: any = []
+  sportsList: any = [];
+  oddsList: any = [];
 
   inputForm = new FormGroup({
     selectedSport: new FormControl(''),
@@ -24,29 +23,38 @@ export class HeroPageComponent implements OnInit {
   });
 
   getSports() {
-    this.http.get("https://odds.p.rapidapi.com/v1/sports", {
-      "headers": {
-        "x-rapidapi-host": "odds.p.rapidapi.com",
-        "x-rapidapi-key": "1b9baa5472msh867d9bc3d0cfec6p1a24cfjsnab59d1f4ae66"
-      }
-    }).subscribe((data: any) => {
-      this.sportsList = data.data
-    })
+    this.http
+      .get('https://odds.p.rapidapi.com/v1/sports', {
+        headers: {
+          'x-rapidapi-host': 'odds.p.rapidapi.com',
+          'x-rapidapi-key':
+            '1b9baa5472msh867d9bc3d0cfec6p1a24cfjsnab59d1f4ae66',
+        },
+      })
+      .subscribe((data: any) => {
+        this.sportsList = data.data;
+      });
   }
 
   fetchSports() {
-    this.http.get(`https://odds.p.rapidapi.com/v1/odds?sport=${this.inputForm.value.selectedSport}&region=${this.inputForm.value.region}&mkt=h2h&dateFormat=iso&oddsFormat=decimal`, {
-      "headers": {
-        "x-rapidapi-host": "odds.p.rapidapi.com",
-        "x-rapidapi-key": "1b9baa5472msh867d9bc3d0cfec6p1a24cfjsnab59d1f4ae66"
-      }
-    }).subscribe((data: any) => {
-      this.oddsList = data.data
-    })
+    this.http
+      .get(
+        `https://odds.p.rapidapi.com/v1/odds?sport=${this.inputForm.value.selectedSport}&region=${this.inputForm.value.region}&mkt=h2h&dateFormat=iso&oddsFormat=decimal`,
+        {
+          headers: {
+            'x-rapidapi-host': 'odds.p.rapidapi.com',
+            'x-rapidapi-key':
+              '1b9baa5472msh867d9bc3d0cfec6p1a24cfjsnab59d1f4ae66',
+          },
+        }
+      )
+      .subscribe((data: any) => {
+        this.oddsList = data.data;
+      });
   }
 
   convertDate(date: string) {
-    let converted = new Date(date).toLocaleString()
-    return converted.substring(0, converted.length - 3)
+    let converted = new Date(date).toLocaleString();
+    return converted.substring(0, converted.length - 3);
   }
 }

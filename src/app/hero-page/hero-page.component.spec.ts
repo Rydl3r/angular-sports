@@ -4,13 +4,13 @@ import { HeroPageComponent } from './hero-page.component';
 
 describe('HeroPageComponent', () => {
   let component: HeroPageComponent;
+
   let fixture: ComponentFixture<HeroPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroPageComponent ]
-    })
-    .compileComponents();
+      declarations: [HeroPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

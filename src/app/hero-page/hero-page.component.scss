@@ -1,37 +1,40 @@
 .title {
-    font-weight: 300;
-    font-size: 48px;
-    padding-top: 50px;
-    padding-bottom: 30px;
-    span {
-        color: #3700b3;
-    }
+  font-weight: 300;
+  font-size: 48px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  span {
+    color: #3700b3;
+  }
 }
 
 .subtitle {
-    font-size: 24px;
-    padding-bottom: 30px;
-    span {
-        color: #3700b3;
-    }
+  font-size: 24px;
+  padding-bottom: 30px;
+  span {
+    color: #3700b3;
+  }
 }
 
 form {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-mat-form-field, button {
-    margin-left: 10px;
-    margin-right: 10px;
+mat-form-field,
+button {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 button {
-    max-height: 50px;
+  max-height: 50px;
 }
 
 mat-card {
-    border: 1px solid; box-shadow: -1px 1px #77aaff, -2px 2px #77aaff, -3px 3px #77aaff, -4px 4px #77aaff, -5px 5px #77aaff;
-    width: 600px;
-    margin: 10px auto 10px auto;
+  border: 1px solid;
+  box-shadow: -1px 1px #77aaff, -2px 2px #77aaff, -3px 3px #77aaff,
+    -4px 4px #77aaff, -5px 5px #77aaff;
+  width: 600px;
+  margin: 10px auto 10px auto;
 }
